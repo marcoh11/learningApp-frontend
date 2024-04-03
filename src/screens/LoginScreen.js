@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from '../services/authService';
 import { ImageBackground } from 'react-native';
+import ModalMessage from '../components/ModalMessage';
+
 
 
 // Importaciones de NativeBase
@@ -11,40 +13,48 @@ import { Box, VStack, FormControl, Input, Button} from 'native-base';
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalType, setModalType] = useState('success'); // 'success', 'warning' o 'error'
+  const [modalText, setModalText] = useState('');
   const navigation = useNavigation();
 
   const handleLogin = async () => {
+    
     try {
-      Alert.alert('Bienvenido', `Bienvenido! ${user.email}`, [
-        { text: 'OK' } // Reemplaza 'Main' por el nombre de tu pantalla principal
-      ]);
-
       const user = await signInWithEmailAndPassword(email, password);
-      // Si el inicio de sesión es exitoso, muestra una alerta y navega a la pantalla principal
-      Alert.alert('Bienvenido', `Bienvenido! ${user.email}`, [
-        { text: 'OK', onPress: () => navigation.navigate('Main') } // Reemplaza 'Main' por el nombre de tu pantalla principal
-      ]);
+      setModalType('success');
+      setModalText(`Bienvenido! ${user.email}`);
+      setModalVisible(true);
+     /*  setTimeout(() => {
+        navigation.navigate("Main");
+        setModalVisible(false);
+      }, 1000); */
     } catch (error) {
-      // Muestra un mensaje de error si la autenticación falla
-      Alert.alert('Error de inicio de sesión', error.message);
+      setModalType('error');
+      setModalText(`Error de inicio de sesión ${error.message}`);
+      setModalVisible(true);
+      /* setTimeout(() => {
+        setModalVisible(false);
+      }, 2000); */
     }
   };
 
   return (
     <ImageBackground
-      source={require('../../assets/images/background.png')} // Asegúrate de que la ruta de la imagen es correcta
+      source={require('../../assets/images/background_blue.png')} // Asegúrate de que la ruta de la imagen es correcta
       style={styles.background}
     >
-      <Box flex={1} alignItems="center" justifyContent="center">
-        <VStack space={4} width="90%" maxW="300px">
+      <Box flex={1} alignItems="center" style={styles.container}>
+        <VStack space={3} width="90%" maxW="300px">
           <FormControl>
-            <FormControl.Label _text={{ color: 'white' }}>Usuario</FormControl.Label>
+            <FormControl.Label _text={{ color: 'white' }}>Correo</FormControl.Label>
             <Input 
-              placeholder="Escribe tu usuario" 
+              placeholder="Escribe tu correo" 
               onChangeText={setEmail} 
               value={email} 
               autoCapitalize="none"
-              color="white"
+              color="black"
+              style={{ backgroundColor: 'white'}}
             />
           </FormControl>
           <FormControl>
@@ -55,12 +65,23 @@ const LoginScreen = () => {
               value={password} 
               type="password"
               autoCapitalize="none"
-              color="white"
+              color="black"
+              style={{ backgroundColor: 'white'}}
             />
           </FormControl>
-          <Button onPress={handleLogin} colorScheme="blue">Iniciar Sesión</Button>
+          <VStack space={3} alignItems="center" style={{ marginTop: 50}}>
+          <Button width="60%" colorScheme="red">Registrarse</Button>
+          <Button width="60%" onPress={handleLogin} colorScheme="blue">Iniciar Sesión</Button>
+          </VStack>
+          
         </VStack>
       </Box>
+      <ModalMessage
+      type={modalType}
+      text={modalText}
+      isVisible={modalVisible}
+      onClose={() => setModalVisible(false)}
+    />
     </ImageBackground>
   );
 };
@@ -71,6 +92,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  container:{
+    marginTop:350
+  }
   // Añade aquí más estilos para tus componentes si es necesario
 });
 

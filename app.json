@@ -25,6 +25,8 @@
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
-    }
-  }
+    },
+    "sdkVersion": "49.0.0"
+  },
+  "name": "learningapp"
 }
