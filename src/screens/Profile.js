@@ -4,6 +4,7 @@ import { useAuth } from '../state/AuthContext';
 import { colors } from '../config/colors';
 import { signOut } from '../services/authService';
 import { Ionicons } from '@expo/vector-icons';
+import  TitleContainer  from '../components/TitleContainer';
 const Profile = () => {
   const { currentUser } = useAuth(); // Accede al usuario actual
   const handleSignOut = async () => {
@@ -17,13 +18,16 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
+    <TitleContainer
+          title="Perfíl 😏"
+      />
+
       <View style={styles.profileSection}>
         <Image
           source={{ uri: 'https://static.vecteezy.com/system/resources/previews/002/275/847/non_2x/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg' }} // Reemplazar con la ruta a tu imagen o importación local
           style={styles.profileImage}
         />
-      </View>
-      <View style={styles.card}>
+        <View style={styles.card}>
         <Text style={styles.label}>Nombres</Text>
         <TextInput
           style={styles.input}
@@ -56,7 +60,7 @@ const Profile = () => {
       </View>
       <Text style={styles.label}>Cerrar Sesión</Text>
       </TouchableOpacity>
-
+      </View>
     </View>
   );
 };
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background, // Fondo negro como en tu diseño
-    alignItems: 'center', // Centrar horizontalmente
+    //alignItems: 'center', // Centrar horizontalmente
     paddingTop:50,
     //justifyContent: 'center', // Centrar verticalmente
   },
@@ -93,8 +97,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   profileImage: {
-    width: 160, // Ajustar según tu diseño
-    height: 160, // Debe ser igual al width para mantener la imagen cuadrada
+    width: 90, // Ajustar según tu diseño
+    height: 90, // Debe ser igual al width para mantener la imagen cuadrada
     borderRadius: 80, // La mitad del width y height para hacerla redonda
     borderWidth: 3, // Si quieres un borde
     borderColor: colors.secondary, // Color del borde
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
     elevation:0,
-    marginTop:25
+    marginTop:10
   },
   iconContainer: {
     marginRight: 10,

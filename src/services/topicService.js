@@ -1,7 +1,6 @@
-import { app } from './firebase';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { firestore } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-const firestore = getFirestore(app);
 
 export const getTopics = async () => {
     const topicsRef = collection(firestore, 'topics');
@@ -11,7 +10,7 @@ export const getTopics = async () => {
         id: doc.id,
         ...doc.data()
       }));
-      console.log("sr :", topics); // Imprime un array de objetos topic en la consola
+      console.log(topics); // Imprime un array de objetos topic en la consola
       return topics; // Retorna un array de objetos topic
     } catch (error) {
       console.error("Error al obtener los topics:", error);

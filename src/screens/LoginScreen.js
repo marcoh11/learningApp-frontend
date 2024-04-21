@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from '../services/authService';
 import { ImageBackground } from 'react-native';
 import ModalMessage from '../components/ModalMessage';
-
+import {colors} from '../config/colors';
 
 
 // Importaciones de NativeBase
@@ -39,6 +39,18 @@ const LoginScreen = () => {
     }
   };
 
+  const handleGoToRegister = () => {
+    navigation.navigate('Registrarse'); // Asegúrate de que 'Register' coincida con el nombre de tu pantalla definido en el StackNavigator
+  };
+
+  const handleGoToResetPassword = () => {
+    navigation.navigate('Restablecer Contraseña'); // Asegúrate de que 'Register' coincida con el nombre de tu pantalla definido en el StackNavigator
+  };
+
+
+
+
+
   return (
     <ImageBackground
       source={require('../../assets/images/background_blue.png')} // Asegúrate de que la ruta de la imagen es correcta
@@ -53,8 +65,7 @@ const LoginScreen = () => {
               onChangeText={setEmail} 
               value={email} 
               autoCapitalize="none"
-              color="black"
-              style={{ backgroundColor: 'white'}}
+              style={styles.input}
             />
           </FormControl>
           <FormControl>
@@ -65,12 +76,12 @@ const LoginScreen = () => {
               value={password} 
               type="password"
               autoCapitalize="none"
-              color="black"
-              style={{ backgroundColor: 'white'}}
+              style={styles.input}
             />
           </FormControl>
           <VStack space={3} alignItems="center" style={{ marginTop: 50}}>
-          <Button width="60%" colorScheme="red">Registrarse</Button>
+          <Button width="60%" colorScheme="red"  onPress={handleGoToRegister}>Registrarse</Button>
+          <Button width="60%" colorScheme="green" onPress={handleGoToResetPassword}>Restablecer Contraseña</Button>
           <Button width="60%" onPress={handleLogin} colorScheme="blue">Iniciar Sesión</Button>
           </VStack>
           
@@ -94,6 +105,10 @@ const styles = StyleSheet.create({
   },
   container:{
     marginTop:350
+  },
+  input:{
+    backgroundColor: colors.tertiary, // Fondo aún más oscuro para los inputs
+    color: 'white', // Color de texto
   }
   // Añade aquí más estilos para tus componentes si es necesario
 });

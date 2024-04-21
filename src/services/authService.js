@@ -1,7 +1,8 @@
 // services/authService.js
-import { signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword, getAuth,signOut as firebaseSignOut } from 'firebase/auth';
-import { app } from './firebase'; // Asegúrate de exportar 'app' desde tu archivo firebase.js
-const auth = getAuth(app);
+import { signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword, getAuth,signOut as firebaseSignOut,createUserWithEmailAndPassword ,sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from './firebase';
+import { createUserDocument } from './userService';
+
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
@@ -24,4 +25,33 @@ const signOut = async () => {
     throw error;
   }}
 
-export { signInWithEmailAndPassword , signOut};
+  const registerUser = async (userData) => {
+    const { email, password, name, lastName } = userData;
+    const userDocument = { name, lastName }
+    try {
+      console.log('Registrando usuario...');
+      console.log('userData', userData);
+      console.log('userDocument', userDocument);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('Usuario creado con UID:', user.uid);
+      await createUserDocument(user.uid, userDocument);
+      return user;
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      throw error;
+    }
+  };
+
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      console.log("Correo de recuperación de contraseña enviado.");
+      // Aquí puedes retornar un mensaje de éxito o realizar alguna acción adicional si es necesario
+    } catch (error) {
+      console.error("Error al enviar correo de recuperación:", error);
+      throw error; // Puedes optar por manejar el error de manera diferente
+    }
+  };
+
+export { signInWithEmailAndPassword , signOut,registerUser,resetPassword};

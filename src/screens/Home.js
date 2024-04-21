@@ -5,6 +5,7 @@ import { colors } from '../config/colors';
 import { getTopics } from '../services/topicService';
 import  Topic  from '../components/Topic';
 import  TopicSkeleton  from '../components/TopicSkeleton'; 
+import  TitleContainer  from '../components/TitleContainer';
 
 const Home = () => {
   const [topics, setTopics] = useState([]);
@@ -38,7 +39,11 @@ const Home = () => {
   }
 
   return (
+
     <ScrollView style={styles.container}>
+    <TitleContainer
+          title="Escoge el tema que quieras aprender 🤟"
+    />
       {topics.map((topic) => (
         <Topic
           key={topic.id}
@@ -62,7 +67,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop:100,
+    paddingTop:50,
     flex: 1,
     backgroundColor: colors.background
     // Agrega tus estilos aquí
