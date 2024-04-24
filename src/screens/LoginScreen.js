@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet,ScrollView,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from '../services/authService';
 import { ImageBackground } from 'react-native';
 import ModalMessage from '../components/ModalMessage';
 import {colors} from '../config/colors';
-
+import MainTitleContainer from '../components/MainTitleContainer';
 
 // Importaciones de NativeBase
 import { Box, VStack, FormControl, Input, Button} from 'native-base';
@@ -52,18 +52,31 @@ const LoginScreen = () => {
 
 
   return (
+    <ScrollView
+  contentContainerStyle={{ flexGrow: 1 }}
+  keyboardShouldPersistTaps='handled'
+>
     <ImageBackground
-      source={require('../../assets/images/background_blue.png')} // Asegúrate de que la ruta de la imagen es correcta
+      source={require('../../assets/images/background_bluep.png')} // Asegúrate de que la ruta de la imagen es correcta
       style={styles.background}
     >
+    
       <Box flex={1} alignItems="center" style={styles.container}>
         <VStack space={3} width="90%" maxW="300px">
           <FormControl>
+          {/* <MainTitleContainer
+          title="AceleraMente 🚀"
+           /> */}
+          <Image
+          source={require('../../assets/icons/icon_p.png')}// Reemplazar con la ruta a tu imagen o importación local
+          style={styles.IconImage}
+        /> 
             <FormControl.Label _text={{ color: 'white' }}>Correo</FormControl.Label>
             <Input 
               placeholder="Escribe tu correo" 
               onChangeText={setEmail} 
               value={email} 
+              variant="unstyled" 
               autoCapitalize="none"
               style={styles.input}
             />
@@ -75,14 +88,15 @@ const LoginScreen = () => {
               onChangeText={setPassword} 
               value={password} 
               type="password"
+              variant="unstyled" 
               autoCapitalize="none"
               style={styles.input}
             />
           </FormControl>
           <VStack space={3} alignItems="center" style={{ marginTop: 50}}>
-          <Button width="60%" colorScheme="red"  onPress={handleGoToRegister}>Registrarse</Button>
-          <Button width="60%" colorScheme="green" onPress={handleGoToResetPassword}>Restablecer Contraseña</Button>
-          <Button width="60%" onPress={handleLogin} colorScheme="blue">Iniciar Sesión</Button>
+          <Button width="60%" onPress={handleLogin} colorScheme="blue" borderRadius={10}>Iniciar Sesión</Button>
+          <Button width="60%" colorScheme="red"  borderRadius={10} onPress={handleGoToRegister}>Registrarse</Button>
+          <Button width="60%" colorScheme="green" borderRadius={10} onPress={handleGoToResetPassword}>Restablecer Contraseña</Button>
           </VStack>
           
         </VStack>
@@ -94,6 +108,7 @@ const LoginScreen = () => {
       onClose={() => setModalVisible(false)}
     />
     </ImageBackground>
+    </ScrollView>
   );
 };
 
@@ -104,11 +119,24 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   container:{
-    marginTop:350
+    marginTop:40
+  },
+  IconImage: {
+    width: 120, // Ajustar según tu diseño
+    height: 120, // Debe ser igual al width para mantener la imagen cuadrada
+    // La mitad del width y height para hacerla redonda
+    borderWidth: 3, // Si quieres un borde
+    borderColor: colors.secondary, // Color del borde
+    alignSelf:'center',
+    marginBottom:150
   },
   input:{
     backgroundColor: colors.tertiary, // Fondo aún más oscuro para los inputs
     color: 'white', // Color de texto
+    paddingLeft:15,
+    padding:10,
+    borderRadius:10,
+   
   }
   // Añade aquí más estilos para tus componentes si es necesario
 });

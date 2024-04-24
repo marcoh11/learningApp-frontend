@@ -1,39 +1,51 @@
 import { View,StyleSheet } from 'react-native';
 const TopicSkeleton = () => {
     return (
-      <View style={styles.skeletonWrapper}>
-        <View style={styles.skeletonCircle} />
-        <View style={styles.skeletonText} />
-        <View style={styles.skeletonTextLong} />
+      <View style={styles.skeletonCard}>
+      <View style={styles.skeletonStatusIndicator} />
+      <View style={styles.skeletonTextContainer}>
+        <View style={styles.skeletonTitle} />
+        <View style={styles.skeletonDescription} />
       </View>
+    </View>
     );
   };
 
   const styles = StyleSheet.create({
-    // ... otros estilos ...
-    skeletonWrapper: {
+    skeletonCard: {
+      backgroundColor: '#D3D3D3', // Color gris plomo para el esqueleto
+      borderRadius: 10,
+      padding: 20,
+      marginBottom: 15,
+      marginLeft: 20,
+      marginRight: 20,
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 16,
-      // ... otros estilos que coincidan con tu componente Topic
+      justifyContent: 'flex-start',
     },
-    skeletonCircle: {
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-      backgroundColor: '#E1E1E1',
-      marginRight: 16,
+    skeletonStatusIndicator: {
+      width: 24,
+      height: 24,
+      borderRadius: 12,
+      backgroundColor: '#E0E0E0', // Un tono ligeramente diferente para el indicador de estado
+      marginRight: 20,
     },
-    skeletonText: {
-      width: 100,
+    skeletonTextContainer: {
+      flex: 1,
+    },
+    skeletonTitle: {
+      backgroundColor: '#E8E8E8',
       height: 20,
-      backgroundColor: '#E1E1E1',
-      marginBottom: 8,
+      width: '70%',
+      marginBottom: 6,
+      borderRadius: 4,
     },
-    skeletonTextLong: {
-      width: 200,
-      height: 20,
-      backgroundColor: '#E1E1E1',
+    skeletonDescription: {
+      backgroundColor: '#E8E8E8',
+      height: 14,
+      width: '50%',
+      borderRadius: 4,
     },
   });
+  
   export default TopicSkeleton;

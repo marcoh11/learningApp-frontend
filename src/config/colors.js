@@ -6,7 +6,7 @@ export const colors = {
     quaternary: '#ecf0f1',
     quinary: '#95a5a6', */
 
-    background: '#1A1A1A',
+    background: '#F2EAF4',
     primary: '#3498db', 
     secondary: '#000000',
     tertiary: '#555555',

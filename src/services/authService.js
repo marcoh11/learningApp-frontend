@@ -28,6 +28,7 @@ const signOut = async () => {
   const registerUser = async (userData) => {
     const { email, password, name, lastName } = userData;
     const userDocument = { name, lastName }
+
     try {
       console.log('Registrando usuario...');
       console.log('userData', userData);

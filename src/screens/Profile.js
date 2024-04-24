@@ -21,12 +21,11 @@ const Profile = () => {
     <TitleContainer
           title="Perfíl 😏"
       />
-
       <View style={styles.profileSection}>
-        <Image
+        {/* <Image
           source={{ uri: 'https://static.vecteezy.com/system/resources/previews/002/275/847/non_2x/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg' }} // Reemplazar con la ruta a tu imagen o importación local
           style={styles.profileImage}
-        />
+        /> */}
         <View style={styles.card}>
         <Text style={styles.label}>Nombres</Text>
         <TextInput
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
     elevation:0,
-    marginTop:10
+    marginTop:40
   },
   iconContainer: {
     marginRight: 10,

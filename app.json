@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "LearningApp",
-    "slug": "LearningApp",
+    "name": "AceleraMente",
+    "slug": "AceleraMente",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icons/icon.png",
+    "icon": "./assets/icons/iconp.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icons/splash.png",
+      "image": "./assets/icons/splashp.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F2EAF4"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,8 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icons/adaptive-iconp.png",
+        "backgroundColor": "#444444"
       },
       "package": "com.learning.app"
     },
@@ -29,5 +29,5 @@
     },
     "sdkVersion": "49.0.0"
   },
-  "name": "learningapp"
+  "name": "AceleraMente"
 }

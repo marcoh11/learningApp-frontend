@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
 import { resetPassword } from '../services/authService'; // Asegúrate de ajustar la ruta de importación según sea necesario
-
+import { colors } from '../config/colors';
 const PasswordResetScreen = () => {
   const [email, setEmail] = useState('');
 
@@ -39,7 +39,7 @@ const PasswordResetScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black', // Color de fondo para el contenedor
+    backgroundColor: colors.background, // Color de fondo para el contenedor
     justifyContent: 'center',
     padding: 20,
   },
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 16, // Tamaño de fuente
   },
   buttonContainer: {
+    marginTop:15,
     backgroundColor: 'gray', // Fondo gris para el botón
     overflow: 'hidden', // Oculta el overflow para mantener los bordes redondeados
     borderRadius: 20, // Bordes redondeados para el botón

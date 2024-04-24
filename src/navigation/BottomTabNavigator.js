@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import LeaderBoard from '../screens/LeaderBoard';
 import Profile from '../screens/Profile';
+import Lab from '../screens/LabScreen';
+import HomeStack from './HomeStack';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../config/colors';
 
@@ -22,6 +24,8 @@ const BottomTabNavigator = () => {
             iconName = focused ? 'ios-trophy' : 'ios-trophy-outline';
           } else if (route.name === 'Perfil') {
             iconName = focused ? 'ios-person' : 'ios-person-outline';
+          } else if (route.name === 'Laboratorio') {
+            iconName = focused ? 'ios-flask' : 'ios-flask-outline';
           }
 
           // Puedes retornar cualquier componente que desees aquí:
@@ -50,7 +54,8 @@ const BottomTabNavigator = () => {
         }
         
       })}>
-      <Tab.Screen name="Inicio" component={Home} options={{ headerShown: false }}  />
+      <Tab.Screen name="Inicio" component={HomeStack} options={{ headerShown: false }}  />
+      <Tab.Screen name="Laboratorio" component={Lab} options={{ headerShown: false }}  />
       <Tab.Screen name="Puntuación" component={LeaderBoard} options={{ headerShown: false }}  />
       <Tab.Screen name="Perfil" component={Profile} options={{ headerShown: false }}  />
     </Tab.Navigator>

@@ -72,11 +72,6 @@ const LeaderBoard = () => {
   return (
     <View style={styles.container}>
 
-    {/* <View style={styles.titleContainer}>
-    <Fontisto name="angle-dobule-right" size={14} color="white" marginBottom={20}/>
-    <Text style={[styles.text, styles.title]}>Puntuación 🥳</Text>
-    </View> */}
-
     <TitleContainer
           title="Puntuación 🥳"
     />

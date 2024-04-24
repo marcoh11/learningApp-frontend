@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert ,StyleSheet} from 'react-native';
 import { registerUser } from '../services/authService'; // Asegúrate de que la ruta sea correcta
+import { colors } from '../config/colors';
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -31,7 +32,6 @@ const RegisterScreen = ({ navigation }) => {
       const userData = { email, password, name, lastName };
       const newUser = await registerUser(userData);
       console.log('Nuevo usuario registrado:', newUser);
-      navigation.navigate('Login');
     } catch (error) {
       console.log(error.code); // Firebase Auth proporciona el código de error
       if (error.code === 'auth/email-already-in-use') {
@@ -44,8 +44,6 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View  style={styles.container}>
-      {/* Formulario de registro con TextInput para email, password, name, lastName */}
-      {/* Botón para enviar el formulario y llamar a handleRegister */}
       <TextInput 
         placeholder="Correo electrónico" 
         placeholderTextColor="white"
@@ -76,7 +74,7 @@ const RegisterScreen = ({ navigation }) => {
         style={styles.input} 
       />
 
-      <View style={styles.buttonContainer}>
+     <View style={styles.buttonContainer}>
         <Button title="Registrar" onPress={handleRegister} color="red" />
       </View>
 
@@ -86,7 +84,7 @@ const RegisterScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black', // El color de fondo del contenedor
+    backgroundColor: colors.background, // El color de fondo del contenedor
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -95,11 +93,13 @@ const styles = StyleSheet.create({
     color: 'white', // Color del texto
     borderRadius: 20, // Bordes redondeados
     width: '80%', // Ancho del TextInput
-    padding: 15, // Padding interno
+    padding: 10, // Padding interno
+    paddingLeft:15,
     marginBottom: 20, // Espacio entre cada TextInput
     fontSize: 16, // Tamaño del texto
   },
   buttonContainer: {
+    marginTop:15,
     width: '80%', // Ancho del botón
     borderRadius: 20, // Bordes redondeados para el botón
     overflow: 'hidden', // Oculta cualquier overflow para mantener el borderRadius
