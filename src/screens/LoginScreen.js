@@ -57,7 +57,7 @@ const LoginScreen = () => {
   keyboardShouldPersistTaps='handled'
 >
     <ImageBackground
-      source={require('../../assets/images/background_bluep.png')} // Asegúrate de que la ruta de la imagen es correcta
+      source={require('../../assets/images/bgmain.png')} // Asegúrate de que la ruta de la imagen es correcta
       style={styles.background}
     >
     

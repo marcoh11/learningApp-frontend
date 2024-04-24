@@ -27,7 +27,12 @@
     "web": {
       "favicon": "./assets/icons/favicon.png"
     },
-    "sdkVersion": "49.0.0"
+    "sdkVersion": "49.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "d64df68b-6041-4042-98d7-68e496eb5648"
+      }
+    }
   },
   "name": "AceleraMente"
 }
