@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <View style={styles.container}>
     <TitleContainer
-          title="Perfíl 😏"
+          title="Perfil 😏"
       />
       <View style={styles.profileSection}>
         {/* <Image

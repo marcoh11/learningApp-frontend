@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/icons/adaptive-iconp.png",
         "backgroundColor": "#444444"
       },
-      "package": "com.learning.app"
+      "package": "com.aceleramentemy.app"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
