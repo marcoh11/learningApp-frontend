@@ -42,7 +42,7 @@ const Card = ({ name, description, imageUrl,list,color }) => {
             {list && <View style={listContainerStyle}>
                 {list.map((item, index) => (
                     <Text key={index} style={styles.listItem}>
-                    ➡️ {item}
+                    {item}
                     </Text>
                 ))}
             </View>}

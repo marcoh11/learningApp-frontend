@@ -6,7 +6,7 @@ const SubTopic =({subtopic})=>{
     return(
     <ScrollView  style={styles.scrollContainer}>
        
-       <Card name={subtopic.name} description={subtopic.description} imageUrl={subtopic.imageUrl} color={subtopic.color} list={subtopic.list}/>
+       <Card  name={subtopic.subtitle} description={subtopic.description} imageUrl={subtopic.imageUrl} color={subtopic.color} list={subtopic.list}/>
        {subtopic.content && subtopic.content.map((item, index) => (
                 <Card 
                     key={index}

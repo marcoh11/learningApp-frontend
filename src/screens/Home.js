@@ -66,7 +66,7 @@ const Home = () => {
   } 
   return (
     <View style={styles.container}>
-      <TitleContainer title="Escoge el tema que quieras aprender 🤟" />
+      <TitleContainer title="¡Perfecto! Escoge un tema 🤟" />
       {TopicContainer()}
     </View>
   );
