@@ -2,9 +2,9 @@
   "expo": {
     "name": "AceleraMente",
     "slug": "AceleraMente",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "orientation": "portrait",
-    "icon": "./assets/icons/iconp.png",
+    "icon": "./assets/icons/icon_p.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/icons/splashp.png",
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/adaptive-iconp.png",
+        "foregroundImage": "./assets/icons/icon_p.png",
         "backgroundColor": "#444444"
       },
       "package": "com.aceleramentemy.app"
